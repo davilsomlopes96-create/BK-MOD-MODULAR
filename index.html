@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BK PROJECT - PAINEL WEB</title>
+    <style>
+        body { 
+            background: #050505; 
+            color: #00ff00; 
+            font-family: 'Courier New', monospace; 
+            text-align: center; 
+            padding: 20px; 
+        }
+        .box { 
+            border: 2px solid #00ff00; 
+            border-radius: 15px; 
+            padding: 20px; 
+            margin-top: 5%; 
+            box-shadow: 0 0 15px #00ff00; 
+        }
+        .btn-ativar { 
+            background: #00ff00; 
+            color: #000; 
+            padding: 15px; 
+            border: none; 
+            border-radius: 10px; 
+            font-weight: bold; 
+            width: 100%; 
+            margin-bottom: 15px; 
+            cursor: pointer; 
+            font-size: 16px; 
+            box-shadow: 0 0 10px #fff;
+        }
+        .btn-game { 
+            background: #fff; 
+            color: #000; 
+            padding: 15px; 
+            border: none; 
+            border-radius: 10px; 
+            font-weight: bold; 
+            width: 100%; 
+            cursor: pointer; 
+            font-size: 16px; 
+            display: none; 
+        }
+        .status-blink { 
+            animation: blink 1s infinite; 
+            font-weight: bold; 
+            color: #fff; 
+        }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
+        .info { font-size: 12px; color: #888; margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>BK PROJECT v1.123.1</h1>
+        <p>OFFSETS: 0x5F80920 | 0x672F4FC</p>
+        <hr border="1" color="#00ff00">
+        
+        <p id="msg">SISTEMA BK AGUARDANDO...</p>
+        
+        <button id="btnAtivar" class="btn-ativar" onclick="injetarBK()">1. ATIVAR AUXÍLIO BK</button>
+        
+        <button id="btnGame" class="btn-game" onclick="abrirFF()">2. ENTRAR NO FREE FIRE</button>
+        
+        <div class="info">
+            Status: Abril/2026 Online<br>
+            Modo: Segundo Plano Safari
+        </div>
+    </div>
+
+    <script>
+        function injetarBK() {
+            let msg = document.getElementById('msg');
+            let btnGame = document.getElementById('btnGame');
+            let btnAtivar = document.getElementById('btnAtivar');
+            
+            msg.innerHTML = "<span class='status-blink'>INJETANDO...</span>";
+            
+            setTimeout(() => {
+                msg.innerHTML = "STATUS: BK DAVISOM ✅";
+                msg.style.color = "#00ff00";
+                btnAtivar.style.display = "none";
+                btnGame.style.display = "block"; 
+                alert("BK Ativado! Não feche o Safari, apenas minimize.");
+            }, 2000);
+        }
+
+        function abrirFF() {
+            // Tenta abrir o Free Fire Global
+            window.location.replace("com.dts.freefireth://");
+
+            // Se não abrir o Global após 1s, tenta abrir o Max
+            setTimeout(function() {
+                window.location.replace("com.dts.freefiremax://");
+            }, 1000);
+            
+            // Caso o usuário não tenha o app, a App Store abre por segurança após 2s
+            setTimeout(function() {
+                window.location.href = "https://apps.apple.com/app/id1300146617";
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
