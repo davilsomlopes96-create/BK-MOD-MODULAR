@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BK PROJECT - TRAVA 100% HS</title>
+    <style>
+        body { background: #000; color: #0ff000; font-family: 'Courier New', monospace; text-align: center; padding: 20px; }
+        .box { border: 3px solid #0ff000; border-radius: 20px; padding: 25px; margin-top: 5%; box-shadow: 0 0 25px #0ff000; }
+        .btn-ativar { background: #0ff000; color: #000; padding: 20px; border: none; border-radius: 12px; font-weight: bold; width: 100%; margin-bottom: 20px; cursor: pointer; font-size: 18px; text-transform: uppercase; }
+        .btn-game { background: #fff; color: #000; padding: 18px; border: none; border-radius: 12px; font-weight: bold; width: 100%; cursor: pointer; font-size: 16px; display: none; }
+        .status-hs { color: #fff; font-weight: bold; text-shadow: 0 0 10px #f00; }
+        .blink { animation: blinker 0.8s linear infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>BK PROJECT v1.123.1</h1>
+        <p class="status-hs">MODO: TRAVA NA CABEÇA (BRUTAL)</p>
+        <p>OFFSETS: 0x5F80920 | 0x672F4FC</p>
+        <hr border="1" color="#0ff000">
+        
+        <p id="msg">AGUARDANDO CONEXÃO COM FF...</p>
+        
+        <button id="btnAtivar" class="btn-ativar" onclick="ativarTravaBK()">ATIVAR TRAVA 100% HS</button>
+        <button id="btnGame" class="btn-game" onclick="entrarNoJogo()">ENTRAR NO FREE FIRE</button>
+    </div>
+
+    <script>
+        function ativarTravaBK() {
+            let msg = document.getElementById('msg');
+            msg.innerHTML = "<span class='blink'>TRAVANDO MIRA NO BONE_HEAD...</span>";
+            
+            setTimeout(() => {
+                msg.innerHTML = "STATUS: BK 100% HS ATIVADO ✅";
+                msg.style.color = "#fff";
+                document.getElementById('btnAtivar').style.display = "none";
+                document.getElementById('btnGame').style.display = "block";
+                alert("Aimbot Atualizado! Mira travada na cabeça. Não feche o Safari.");
+            }, 2500);
+        }
+
+        function entrarNoJogo() {
+            // Tenta abrir o app direto
+            window.location.replace("freefire://");
+            
+            // Caso não abra, tenta o modo alternativo em 1.5s
+            setTimeout(function() {
+                window.location.replace("com.dts.freefireth://");
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
